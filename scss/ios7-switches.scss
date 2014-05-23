@@ -1,0 +1,135 @@
+// light colors
+$light-green: #2ecc71;
+$light-red: #e74c3c;
+$light-blue: #3498db;
+$light-orange: #e67e22;
+
+// dark colors
+$dark-green: #27ae60;
+$dark-red: #c0392b;
+$dark-blud: #2980b9;
+$dark-orange: #d35400;
+
+// grey colors
+$grey: #ecf0f1;
+$light-grey: #dfdfdf;
+$dark-grey: #bdc3c7;
+$white: #ffffff;
+
+// sizing
+$switch-width: 50px;
+$switch-height: ($switch-width * 60) / 100;
+$switch-radius: ($switch-height * 66.666666667) / 100;
+
+// transitions
+$transition-speed: .4s;
+$transition-timing-function: linear;
+
+@mixin box-sizing($sizing) {
+  -webkit-box-sizing: $sizing;
+  -moz-box-sizing: $sizing;
+  -ms-box-sizing: $sizing;
+  -o-box-sizing: $sizing;
+  box-sizing: $sizing;
+}
+
+@mixin box-shadow($shadow) {
+  -webkit-box-shadow: $shadow;
+  box-shadow: $shadow;
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin transition($transition) {
+  -webkit-transition: $transition;
+  -moz-transition: $transition;
+  -ms-transition: $transition;
+  -o-transition: $transition;
+  transition: $transition;
+}
+
+input[type="checkbox"].switch,
+input[type="radio"].switch {
+  display: none;
+
+  & + label {
+    display: inline-block;
+    position: relative;
+    width: $switch-width;
+    height: $switch-height;
+    vertical-align: middle;
+
+    background-color: $white;
+    border: 1px solid $light-grey;
+    border-radius: $switch-radius;
+    cursor: pointer;
+
+    @include box-shadow(inset 0px 0px 0px 0px $light-grey);
+    @include transition((border $transition-speed, box-shadow $transition-speed));
+    @include box-sizing(content-box);
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: $switch-height;
+      height: $switch-height;
+
+      background: $white;
+      border-radius: 100%;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+
+      @include box-shadow(0 1px 3px rgba(0,0,0,.4));
+      @include transition(left ($transition-speed / 2) ease-in-out);
+    }
+  }
+
+  &:checked {
+
+    & + label {
+      background-color: $light-green;
+      border-color: $light-green;
+
+      @include box-shadow(inset 0px 0px 0px (($switch-height * 53.33) / 100) $light-green);
+      @include transition((background-color ($transition-speed * 3), border $transition-speed, box-shadow $transition-speed));
+
+      &:after {
+        left: $switch-width - $switch-height;
+      }
+    }
+
+    &.switch-warning + label {
+      background-color: $light-orange;
+      border-color: $light-orange;
+      @include box-shadow(inset 0px 0px 0px 16px $light-orange);
+    }
+
+    &.switch-danger + label {
+      background-color: $light-red;
+      border-color: $light-red;
+      @include box-shadow(inset 0px 0px 0px 16px $light-red);
+    }
+
+    &.switch-info + label {
+      background-color: $light-blue;
+      border-color: $light-blue;
+      @include box-shadow(inset 0px 0px 0px 16px $light-blue);
+    }
+  }
+
+  &:disabled + label {
+    background-color: $grey;
+    border-color: $grey;
+    @include box-shadow(none);
+  }
+
+  &:checked:disabled + label {
+    background-color: $dark-green;
+    border-color: $dark-green;
+    @include box-shadow(none);
+  }
+}
