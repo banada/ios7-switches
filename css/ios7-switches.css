@@ -74,15 +74,10 @@ input[type="radio"].switch {
     border-color: #3498db;
     -webkit-box-shadow: inset 0px 0px 0px 16px #3498db;
     box-shadow: inset 0px 0px 0px 16px #3498db; }
-  input[type="checkbox"].switch:disabled + label,
-  input[type="radio"].switch:disabled + label {
-    background-color: #ecf0f1;
-    border-color: #ecf0f1;
-    -webkit-box-shadow: none;
-    box-shadow: none; }
-  input[type="checkbox"].switch:checked:disabled + label,
-  input[type="radio"].switch:checked:disabled + label {
-    background-color: #27ae60;
-    border-color: #27ae60;
+  input[type="checkbox"].switch:disabled + label, input[type="checkbox"].switch:disabled:checked + label,
+  input[type="radio"].switch:disabled + label,
+  input[type="radio"].switch:disabled:checked + label {
+    background-color: #ecf0f1 !important;
+    border-color: #ecf0f1 !important;
     -webkit-box-shadow: none;
     box-shadow: none; }
