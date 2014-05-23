@@ -79,5 +79,6 @@ input[type="radio"].switch {
   input[type="radio"].switch:disabled:checked + label {
     background-color: #ecf0f1 !important;
     border-color: #ecf0f1 !important;
+    cursor: default;
     -webkit-box-shadow: none;
     box-shadow: none; }
