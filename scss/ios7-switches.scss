@@ -4,16 +4,9 @@ $light-red: #e74c3c;
 $light-blue: #3498db;
 $light-orange: #e67e22;
 
-// dark colors
-$dark-green: #27ae60;
-$dark-red: #c0392b;
-$dark-blud: #2980b9;
-$dark-orange: #d35400;
-
 // grey colors
 $grey: #ecf0f1;
 $light-grey: #dfdfdf;
-$dark-grey: #bdc3c7;
 $white: #ffffff;
 
 // sizing
@@ -24,7 +17,6 @@ $border-width: 1px;
 
 // transitions
 $transition-speed: .4s;
-$transition-timing-function: linear;
 
 @mixin box-sizing($sizing) {
   -webkit-box-sizing: $sizing;
@@ -64,7 +56,7 @@ input[type="radio"].switch {
     vertical-align: middle;
 
     background-color: $white;
-    border: 1px solid $light-grey;
+    border: $border-width solid $light-grey;
     border-radius: $switch-radius;
     cursor: pointer;
 
