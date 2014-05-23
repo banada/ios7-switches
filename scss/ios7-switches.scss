@@ -20,6 +20,7 @@ $white: #ffffff;
 $switch-width: 50px;
 $switch-height: ($switch-width * 60) / 100;
 $switch-radius: ($switch-height * 66.666666667) / 100;
+$border-width: 1px;
 
 // transitions
 $transition-speed: .4s;
@@ -69,15 +70,15 @@ input[type="radio"].switch {
 
     @include box-shadow(inset 0px 0px 0px 0px $light-grey);
     @include transition((border $transition-speed, box-shadow $transition-speed));
-    @include box-sizing(content-box);
+    @include box-sizing(border-box);
 
     &:after {
       content: "";
       position: absolute;
       top: 0;
       left: 0;
-      width: $switch-height;
-      height: $switch-height;
+      width: $switch-height - ($border-width * 2);
+      height: $switch-height - ($border-width * 2);
 
       background: $white;
       border-radius: 100%;

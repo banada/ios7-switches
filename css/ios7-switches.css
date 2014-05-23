@@ -19,19 +19,19 @@ input[type="radio"].switch {
     -ms-transition: border 0.4s, box-shadow 0.4s;
     -o-transition: border 0.4s, box-shadow 0.4s;
     transition: border 0.4s, box-shadow 0.4s;
-    -webkit-box-sizing: content-box;
-    -moz-box-sizing: content-box;
-    -ms-box-sizing: content-box;
-    -o-box-sizing: content-box;
-    box-sizing: content-box; }
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box; }
     input[type="checkbox"].switch + label:after,
     input[type="radio"].switch + label:after {
       content: "";
       position: absolute;
       top: 0;
       left: 0;
-      width: 30px;
-      height: 30px;
+      width: 28px;
+      height: 28px;
       background: white;
       border-radius: 100%;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
