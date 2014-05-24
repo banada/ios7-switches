@@ -23,4 +23,6 @@ You can also add some color to the switches. Like twitter bootstrap, you also ha
 <label for="cb"></label>
 ```
 
+Here is jsfiddle [demo](http://jsfiddle.net/tujamaica/EjYfr/embedded/result/).
+
 Hope you like it. Cheers.
