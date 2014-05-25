@@ -46,7 +46,7 @@ $transition-speed: .4s;
 
 input[type="checkbox"].switch,
 input[type="radio"].switch {
-  display: none;
+  display: none; // hide the real input
 
   & + label {
     display: inline-block;
@@ -60,9 +60,9 @@ input[type="radio"].switch {
     border-radius: $switch-radius;
     cursor: pointer;
 
+    @include box-sizing(border-box);
     @include box-shadow(inset 0px 0px 0px 0px $light-grey);
     @include transition((border $transition-speed, box-shadow $transition-speed));
-    @include box-sizing(border-box);
 
     &:after {
       content: "";
@@ -73,7 +73,6 @@ input[type="radio"].switch {
       height: $switch-height - ($border-width * 2);
 
       background: $white;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 
       @include border-radius(100%);
       @include box-shadow(0 1px 3px rgba(0,0,0,.4));

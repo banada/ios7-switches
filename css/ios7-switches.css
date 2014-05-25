@@ -12,18 +12,18 @@ input[type="radio"].switch {
     border: 1px solid #dfdfdf;
     border-radius: 20.0px;
     cursor: pointer;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
     -webkit-box-shadow: inset 0px 0px 0px 0px #dfdfdf;
     box-shadow: inset 0px 0px 0px 0px #dfdfdf;
     -webkit-transition: border 0.4s, box-shadow 0.4s;
     -moz-transition: border 0.4s, box-shadow 0.4s;
     -ms-transition: border 0.4s, box-shadow 0.4s;
     -o-transition: border 0.4s, box-shadow 0.4s;
-    transition: border 0.4s, box-shadow 0.4s;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    -o-box-sizing: border-box;
-    box-sizing: border-box; }
+    transition: border 0.4s, box-shadow 0.4s; }
     input[type="checkbox"].switch + label:after,
     input[type="radio"].switch + label:after {
       content: "";
@@ -33,7 +33,6 @@ input[type="radio"].switch {
       width: 28px;
       height: 28px;
       background: white;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
       -webkit-border-radius: 100%;
       border-radius: 100%;
       -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
