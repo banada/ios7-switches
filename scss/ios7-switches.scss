@@ -73,9 +73,9 @@ input[type="radio"].switch {
       height: $switch-height - ($border-width * 2);
 
       background: $white;
-      border-radius: 100%;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 
+      @include border-radius(100%);
       @include box-shadow(0 1px 3px rgba(0,0,0,.4));
       @include transition(left ($transition-speed / 2) ease-in-out);
     }

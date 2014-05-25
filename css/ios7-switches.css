@@ -33,8 +33,9 @@ input[type="radio"].switch {
       width: 28px;
       height: 28px;
       background: white;
-      border-radius: 100%;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+      -webkit-border-radius: 100%;
+      border-radius: 100%;
       -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
       -webkit-transition: left 0.2s ease-in-out;
