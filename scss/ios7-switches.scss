@@ -38,7 +38,6 @@ input[type="radio"].switch {
     border: $border-width solid $light-grey;
     border-radius: $switch-radius;
     cursor: pointer;
-    box-shadow: inset 0px 0px 0px 0px $light-grey;
 
     @include box-sizing(border-box);
     @include transition((border $transition-speed, box-shadow $transition-speed));

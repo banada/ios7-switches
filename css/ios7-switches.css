@@ -12,7 +12,6 @@ input[type="radio"].switch {
     border: 1px solid #dfdfdf;
     border-radius: 20.0px;
     cursor: pointer;
-    box-shadow: inset 0px 0px 0px 0px #dfdfdf;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
