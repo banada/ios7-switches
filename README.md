@@ -3,7 +3,7 @@ IOS 7 Switches
 
 ![Screenshot](https://raw.githubusercontent.com/tujamaica/ios7-switches/master/screenshot.png "Screenshot")
 
-IOS 7 toggle switches written in pure CSS. No javascript required.
+IOS 7 toggle switches written in pure CSS. No javascript is required.
 
 There are two steps needed. 
 The first one is to add a switch class to the checkbox or radio input element.
