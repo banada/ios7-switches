@@ -1,19 +1,5 @@
 module.exports = function(grunt) {
   grunt.initConfig({
-    coffee: {
-      compile: {
-        files: {
-          'dist/js/ios7-switches.js': 'coffee/**/*.coffee'
-        }
-      }
-    },
-    uglify: {
-      dist: {
-        files: {
-          'dist/js/ios7-switches.min.js': 'dist/js/ios7-switches.js'
-        }
-      }
-    },
     sass: {
       compile: {
         files: {
@@ -29,10 +15,7 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      coffee: {
-        files: 'coffee/**/*.coffee',
-        tasks: ['coffee', 'uglify']
-      },
+
       sass: {
         files: 'scss/**/*.scss',
         tasks: ['sass', 'cssmin']
@@ -40,12 +23,10 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.loadNpmTasks('grunt-contrib-coffee');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
 
-  grunt.registerTask('build', ['coffee', 'uglify', 'sass', 'cssmin']);
-  grunt.registerTask('default', ['watch']);
+  grunt.registerTask('build', ['sass', 'cssmin']);
+  grunt.registerTask('default', ['build', 'watch']);
 };
