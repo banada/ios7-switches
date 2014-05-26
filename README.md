@@ -3,7 +3,7 @@ IOS 7 Switches
 
 ![Screenshot](https://raw.githubusercontent.com/tujamaica/ios7-switches/master/screenshot.png "Screenshot")
 
-IOS 7 toggle switches written in pure CSS. No javascript required.
+IOS 7 toggle switches written in pure CSS. No javascript is required.
 
 There are two steps needed. 
 The first one is to add a switch class to the checkbox or radio input element.
@@ -22,6 +22,8 @@ You can also add some color to the switches. Like twitter bootstrap, you also ha
 <input type="checkbox" class="switch switch-warning" id="cb" />
 <label for="cb"></label>
 ```
+
+I didn't test this in all browsers, but apparently works fine in Internet Explorer 9 or higher, Safari 7 and latest versions of Firefox, Chrome and Opera.
 
 Here is jsfiddle [demo](http://jsfiddle.net/tujamaica/EjYfr/embedded/result/).
 
