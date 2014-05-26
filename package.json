@@ -1,0 +1,24 @@
+{
+  "name": "ios7-switches",
+  "version": "0.0.0",
+  "description": "IOS 7 Switches =============",
+  "main": "Gruntfile.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:tujamaica/ios7-switches.git"
+  },
+  "author": "Gabriel Vaquer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tujamaica/ios7-switches/issues"
+  },
+  "homepage": "https://github.com/tujamaica/ios7-switches",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-coffee": "^0.10.1",
+    "grunt-contrib-cssmin": "^0.9.0",
+    "grunt-contrib-sass": "^0.7.3",
+    "grunt-contrib-uglify": "^0.4.0",
+    "grunt-contrib-watch": "^0.6.1"
+  }
+}
