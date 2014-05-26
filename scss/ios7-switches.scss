@@ -1,21 +1,19 @@
 @import 'bourbon/bourbon';
 
 // light colors
-$light-green: #2ecc71;
-$light-red: #e74c3c;
-$light-blue: #3498db;
-$light-orange: #e67e22;
-
-// grey colors
-$white: #ffffff;
-$grey: #ecf0f1;
-$light-grey: #dfdfdf;
+$white        : #ffffff;
+$grey         : #ecf0f1;
+$light-green  : #2ecc71;
+$light-red    : #e74c3c;
+$light-blue   : #3498db;
+$light-orange : #e67e22;
+$light-grey   : #dfdfdf;
 
 // sizing
-$switch-width: 50px;
-$switch-height: ($switch-width * 60) / 100;
-$switch-radius: ($switch-height * 66.666666667) / 100;
-$border-width: 1px;
+$switch-width  : 50px;
+$switch-height : ($switch-width * 60) / 100;
+$switch-radius : ($switch-height * 66.666666667) / 100;
+$border-width  : 1px;
 
 // transitions
 $transition-speed: .4s;
