@@ -1,3 +1,5 @@
+@import 'bourbon/bourbon';
+
 // light colors
 $light-green: #2ecc71;
 $light-red: #e74c3c;
@@ -5,9 +7,9 @@ $light-blue: #3498db;
 $light-orange: #e67e22;
 
 // grey colors
+$white: #ffffff;
 $grey: #ecf0f1;
 $light-grey: #dfdfdf;
-$white: #ffffff;
 
 // sizing
 $switch-width: 50px;
@@ -18,37 +20,16 @@ $border-width: 1px;
 // transitions
 $transition-speed: .4s;
 
-@mixin box-sizing($sizing) {
-  -webkit-box-sizing: $sizing;
-  -moz-box-sizing: $sizing;
-  -ms-box-sizing: $sizing;
-  -o-box-sizing: $sizing;
-  box-sizing: $sizing;
-}
-
-@mixin box-shadow($shadow) {
-  -webkit-box-shadow: $shadow;
-  box-shadow: $shadow;
-}
-
-@mixin border-radius($radius) {
-  -webkit-border-radius: $radius;
-  border-radius: $radius;
-}
-
-@mixin transition($transition) {
-  -webkit-transition: $transition;
-  -moz-transition: $transition;
-  -ms-transition: $transition;
-  -o-transition: $transition;
-  transition: $transition;
-}
+// classes
+$classes: (warning: $light-orange, danger: $light-red, info: $light-blue);
 
 input[type="checkbox"].switch,
 input[type="radio"].switch {
-  display: none; // hide the real input
 
-  & + label {
+  // hide the real input
+  display: none;
+
+  + label {
     display: inline-block;
     position: relative;
     width: $switch-width;
@@ -59,34 +40,32 @@ input[type="radio"].switch {
     border: $border-width solid $light-grey;
     border-radius: $switch-radius;
     cursor: pointer;
+    box-shadow: inset 0px 0px 0px 0px $light-grey;
 
     @include box-sizing(border-box);
-    @include box-shadow(inset 0px 0px 0px 0px $light-grey);
     @include transition((border $transition-speed, box-shadow $transition-speed));
 
     &:after {
       content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
       width: $switch-height - ($border-width * 2);
       height: $switch-height - ($border-width * 2);
 
       background: $white;
+      border-radius: 100%;
+      box-shadow: 0 1px 3px rgba(0,0,0,.4);
 
-      @include border-radius(100%);
-      @include box-shadow(0 1px 3px rgba(0,0,0,.4));
+      @include position(absolute, 0 null null 0);
       @include transition(left ($transition-speed / 2) ease-in-out);
     }
   }
 
   &:checked {
 
-    & + label {
+    + label {
       background-color: $light-green;
       border-color: $light-green;
+      box-shadow: inset 0px 0px 0px (($switch-height * 53.33) / 100) $light-green;
 
-      @include box-shadow(inset 0px 0px 0px (($switch-height * 53.33) / 100) $light-green);
       @include transition((background-color ($transition-speed * 3), border $transition-speed, box-shadow $transition-speed));
 
       &:after {
@@ -94,32 +73,24 @@ input[type="radio"].switch {
       }
     }
 
-    &.switch-warning + label {
-      background-color: $light-orange;
-      border-color: $light-orange;
-      @include box-shadow(inset 0px 0px 0px 16px $light-orange);
-    }
-
-    &.switch-danger + label {
-      background-color: $light-red;
-      border-color: $light-red;
-      @include box-shadow(inset 0px 0px 0px 16px $light-red);
-    }
-
-    &.switch-info + label {
-      background-color: $light-blue;
-      border-color: $light-blue;
-      @include box-shadow(inset 0px 0px 0px 16px $light-blue);
+    // avoid repetition using an iterator
+    // for colorful switches
+    @each $key, $value in $classes {
+      &.switch-#{$key} + label {
+        background-color: $value;
+        border-color: $value;
+        box-shadow: inset 0px 0px 0px 16px $value;
+      }
     }
   }
 
   &:disabled,
   &:disabled:checked {
-    & + label {
-      background-color: $grey !important;
-      border-color: $grey !important;
+    + label {
+      background-color: $grey;
+      border-color: $grey;
       cursor: default;
-      @include box-shadow(none);
+      box-shadow: none;
     }
   }
 }
