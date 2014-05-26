@@ -23,6 +23,8 @@ You can also add some color to the switches. Like twitter bootstrap, you also ha
 <label for="cb"></label>
 ```
 
+I didn't test this in all browsers, but apparently works fine in Internet Explorer 9 or higher, Safari 7 and latest versions of Firefox and Chrome.
+
 Here is jsfiddle [demo](http://jsfiddle.net/tujamaica/EjYfr/embedded/result/).
 
 Hope you like it. Cheers.
