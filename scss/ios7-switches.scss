@@ -9,6 +9,8 @@ $light-blue   : #3498db;
 $light-orange : #e67e22;
 $light-grey   : #dfdfdf;
 
+$switch-name  : 'switch';
+
 // sizing
 $switch-width  : 50px;
 $switch-height : ($switch-width * 60) / 100;
@@ -21,73 +23,76 @@ $transition-speed: .4s;
 // classes
 $classes: (warning: $light-orange, danger: $light-red, info: $light-blue);
 
-input[type="checkbox"].switch,
-input[type="radio"].switch {
+.#{$switch-name} {
+  display: inline-block;
 
-  // hide the real input
-  display: none;
-
-  + label {
-    display: inline-block;
-    position: relative;
-    width: $switch-width;
-    height: $switch-height;
-    vertical-align: middle;
-
-    background-color: $white;
-    border: $border-width solid $light-grey;
-    border-radius: $switch-radius;
-    cursor: pointer;
-
-    @include box-sizing(border-box);
-    @include transition((border $transition-speed, box-shadow $transition-speed));
-
-    &:after {
-      content: "";
-      width: $switch-height - ($border-width * 2);
-      height: $switch-height - ($border-width * 2);
-
-      background: $white;
-      border-radius: 100%;
-      box-shadow: 0 1px 3px rgba(0,0,0,.4);
-
-      @include position(absolute, 0 null null 0);
-      @include transition(left ($transition-speed / 2) ease-in-out);
-    }
-  }
-
-  &:checked {
+  input[type="checkbox"],
+  input[type="radio"] {
+    display: none;
 
     + label {
-      background-color: $light-green;
-      border-color: $light-green;
-      box-shadow: inset 0px 0px 0px (($switch-height * 53.33) / 100) $light-green;
+      display: block;
+      position: relative;
+      width: $switch-width;
+      height: $switch-height;
+      vertical-align: middle;
 
-      @include transition((background-color ($transition-speed * 3), border $transition-speed, box-shadow $transition-speed));
+      background-color: $white;
+      border: $border-width solid $light-grey;
+      border-radius: $switch-radius;
+      cursor: pointer;
+
+      @include box-sizing(border-box);
+      @include transition((border $transition-speed, box-shadow $transition-speed));
 
       &:after {
-        left: $switch-width - $switch-height;
+        content: "";
+        width: $switch-height - ($border-width * 2);
+        height: $switch-height - ($border-width * 2);
+
+        background: $white;
+        border-radius: 100%;
+        box-shadow: 0 1px 3px rgba(0,0,0,.4);
+
+        @include position(absolute, 0 null null 0);
+        @include transition(left ($transition-speed / 2) ease-in-out);
       }
     }
 
-    // avoid repetition using an iterator
-    // for colorful switches
-    @each $key, $value in $classes {
-      &.switch-#{$key} + label {
-        background-color: $value;
-        border-color: $value;
-        box-shadow: inset 0px 0px 0px 16px $value;
+    &:checked {
+
+      + label {
+        background-color: $light-green;
+        border-color: $light-green;
+        box-shadow: inset 0px 0px 0px (($switch-height * 53.33) / 100) $light-green;
+
+        @include transition((background-color ($transition-speed * 3), border $transition-speed, box-shadow $transition-speed));
+
+        &:after {
+          left: $switch-width - $switch-height;
+        }
+      }
+
+    }
+
+    &:disabled,
+    &:disabled:checked {
+      + label {
+        background-color: $grey;
+        border-color: $grey;
+        cursor: default;
+        box-shadow: none;
       }
     }
   }
 
-  &:disabled,
-  &:disabled:checked {
-    + label {
-      background-color: $grey;
-      border-color: $grey;
-      cursor: default;
-      box-shadow: none;
+  // avoid repetition using an iterator
+  // for colorful switches
+  @each $key, $value in $classes {
+    &.#{$switch-name}-#{$key} label {
+      background-color: $value;
+      border-color: $value;
+      box-shadow: inset 0px 0px 0px 16px $value;
     }
   }
 }

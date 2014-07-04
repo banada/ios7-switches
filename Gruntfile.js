@@ -2,6 +2,9 @@ module.exports = function(grunt) {
   grunt.initConfig({
     sass: {
       compile: {
+        options: {
+          style: 'expanded'
+        },
         files: {
           'dist/css/ios7-switches.css': 'scss/ios7-switches.scss'
         }

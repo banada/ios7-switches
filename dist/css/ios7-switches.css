@@ -1,67 +1,76 @@
-input[type="checkbox"].switch,
-input[type="radio"].switch {
-  display: none; }
-  input[type="checkbox"].switch + label,
-  input[type="radio"].switch + label {
-    display: inline-block;
-    position: relative;
-    width: 50px;
-    height: 30px;
-    vertical-align: middle;
-    background-color: white;
-    border: 1px solid #dfdfdf;
-    border-radius: 20.0px;
-    cursor: pointer;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    -webkit-transition: border 0.4s, box-shadow 0.4s;
-    -moz-transition: border 0.4s, box-shadow 0.4s;
-    transition: border 0.4s, box-shadow 0.4s; }
-    input[type="checkbox"].switch + label:after,
-    input[type="radio"].switch + label:after {
-      content: "";
-      width: 28px;
-      height: 28px;
-      background: white;
-      border-radius: 100%;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-      position: absolute;
-      top: 0;
-      left: 0;
-      -webkit-transition: left 0.2s ease-in-out;
-      -moz-transition: left 0.2s ease-in-out;
-      transition: left 0.2s ease-in-out; }
-  input[type="checkbox"].switch:checked + label,
-  input[type="radio"].switch:checked + label {
-    background-color: #2ecc71;
-    border-color: #2ecc71;
-    box-shadow: inset 0px 0px 0px 15.999px #2ecc71;
-    -webkit-transition: background-color 1.2s, border 0.4s, box-shadow 0.4s;
-    -moz-transition: background-color 1.2s, border 0.4s, box-shadow 0.4s;
-    transition: background-color 1.2s, border 0.4s, box-shadow 0.4s; }
-    input[type="checkbox"].switch:checked + label:after,
-    input[type="radio"].switch:checked + label:after {
-      left: 20px; }
-  input[type="checkbox"].switch:checked.switch-warning + label,
-  input[type="radio"].switch:checked.switch-warning + label {
-    background-color: #e67e22;
-    border-color: #e67e22;
-    box-shadow: inset 0px 0px 0px 16px #e67e22; }
-  input[type="checkbox"].switch:checked.switch-danger + label,
-  input[type="radio"].switch:checked.switch-danger + label {
-    background-color: #e74c3c;
-    border-color: #e74c3c;
-    box-shadow: inset 0px 0px 0px 16px #e74c3c; }
-  input[type="checkbox"].switch:checked.switch-info + label,
-  input[type="radio"].switch:checked.switch-info + label {
-    background-color: #3498db;
-    border-color: #3498db;
-    box-shadow: inset 0px 0px 0px 16px #3498db; }
-  input[type="checkbox"].switch:disabled + label, input[type="checkbox"].switch:disabled:checked + label,
-  input[type="radio"].switch:disabled + label,
-  input[type="radio"].switch:disabled:checked + label {
-    background-color: #ecf0f1;
-    border-color: #ecf0f1;
-    cursor: default;
-    box-shadow: none; }
+.switch {
+  display: inline-block;
+}
+.switch input[type="checkbox"],
+.switch input[type="radio"] {
+  display: none;
+}
+.switch input[type="checkbox"] + label,
+.switch input[type="radio"] + label {
+  display: block;
+  position: relative;
+  width: 50px;
+  height: 30px;
+  vertical-align: middle;
+  background-color: white;
+  border: 1px solid #dfdfdf;
+  border-radius: 20.0px;
+  cursor: pointer;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: border 0.4s, box-shadow 0.4s;
+  -moz-transition: border 0.4s, box-shadow 0.4s;
+  transition: border 0.4s, box-shadow 0.4s;
+}
+.switch input[type="checkbox"] + label:after,
+.switch input[type="radio"] + label:after {
+  content: "";
+  width: 28px;
+  height: 28px;
+  background: white;
+  border-radius: 100%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transition: left 0.2s ease-in-out;
+  -moz-transition: left 0.2s ease-in-out;
+  transition: left 0.2s ease-in-out;
+}
+.switch input[type="checkbox"]:checked + label,
+.switch input[type="radio"]:checked + label {
+  background-color: #2ecc71;
+  border-color: #2ecc71;
+  box-shadow: inset 0px 0px 0px 15.999px #2ecc71;
+  -webkit-transition: background-color 1.2s, border 0.4s, box-shadow 0.4s;
+  -moz-transition: background-color 1.2s, border 0.4s, box-shadow 0.4s;
+  transition: background-color 1.2s, border 0.4s, box-shadow 0.4s;
+}
+.switch input[type="checkbox"]:checked + label:after,
+.switch input[type="radio"]:checked + label:after {
+  left: 20px;
+}
+.switch input[type="checkbox"]:disabled + label, .switch input[type="checkbox"]:disabled:checked + label,
+.switch input[type="radio"]:disabled + label,
+.switch input[type="radio"]:disabled:checked + label {
+  background-color: #ecf0f1;
+  border-color: #ecf0f1;
+  cursor: default;
+  box-shadow: none;
+}
+.switch.switch-warning label {
+  background-color: #e67e22;
+  border-color: #e67e22;
+  box-shadow: inset 0px 0px 0px 16px #e67e22;
+}
+.switch.switch-danger label {
+  background-color: #e74c3c;
+  border-color: #e74c3c;
+  box-shadow: inset 0px 0px 0px 16px #e74c3c;
+}
+.switch.switch-info label {
+  background-color: #3498db;
+  border-color: #3498db;
+  box-shadow: inset 0px 0px 0px 16px #3498db;
+}
