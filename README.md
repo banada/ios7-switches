@@ -16,7 +16,7 @@ Note that the "for" attribute on the label tag must match the "id" attribute on 
 <label for="cb"></label>
 ```
 
-You can also add some color to the switches. Like twitter bootstrap, you also have a switch-(warning|danger|info) class available.
+You can also add some color to the switches. Like twitter bootstrap, you also have a switch-(warning | danger | info) class available.
 
 ```xml
 <input type="checkbox" class="switch switch-warning" id="cb" />
