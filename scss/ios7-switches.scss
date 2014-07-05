@@ -22,11 +22,11 @@ $classes             : (
 );
 
 // non configurable options
-$switch-radius                   : $switch-height / 2;
-$switch-handler-width            : $switch-height - ($switch-border-width * 2);
-$switch-handler-height           : $switch-handler-width;
-$switch-handler-left             : $switch-width - $switch-handler-width - ($switch-border-width * 2);
-$switch-transition-speed         : .3s;
+$switch-radius           : $switch-height / 2;
+$switch-handler-width    : $switch-height - ($switch-border-width * 2);
+$switch-handler-height   : $switch-handler-width;
+$switch-handler-left     : $switch-width - $switch-handler-width - ($switch-border-width * 2);
+$switch-transition-speed : .3s;
 
 .#{$switch-name} {
   display: inline-block;
