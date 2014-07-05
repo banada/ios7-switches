@@ -2,34 +2,43 @@
 
 // light colors
 $white        : #ffffff;
-$grey         : #ecf0f1;
+$grey         : #d0d0d0;
 $light-green  : #2ecc71;
 $light-red    : #e74c3c;
 $light-blue   : #3498db;
 $light-orange : #e67e22;
-$light-grey   : #dfdfdf;
+$light-grey   : #e3e3e3;
 
-$switch-name  : 'switch';
 
-// sizing
-$switch-width  : 50px;
-$switch-height : ($switch-width * 60) / 100;
-$switch-radius : ($switch-height * 66.666666667) / 100;
-$border-width  : 1px;
+// configurable options
+$switch-name         : 'switch';
+$switch-width        : 50px;
+$switch-height       : ($switch-width * 60) / 100;
+$switch-border-width : 1px;
+$classes             : (
+  warning : $light-orange,
+  danger  : $light-red,
+  info    : $light-blue
+);
 
-// transitions
-$transition-speed: .4s;
-
-// classes
-$classes: (warning: $light-orange, danger: $light-red, info: $light-blue);
+// non configurable options
+$switch-radius                   : $switch-height / 2;
+$switch-handler-width            : $switch-height - ($switch-border-width * 2);
+$switch-handler-height           : $switch-handler-width;
+$switch-handler-left             : $switch-width - $switch-handler-width - ($switch-border-width * 2);
+$switch-transition-speed         : .3s;
 
 .#{$switch-name} {
   display: inline-block;
+  @include user-select(none);
 
   input[type="checkbox"],
   input[type="radio"] {
     display: none;
 
+    /**
+     * Switch Container
+     */
     + label {
       display: block;
       position: relative;
@@ -37,59 +46,71 @@ $classes: (warning: $light-orange, danger: $light-red, info: $light-blue);
       height: $switch-height;
       vertical-align: middle;
 
-      background-color: $white;
-      border: $border-width solid $light-grey;
+      border: $switch-border-width solid $light-grey;
       border-radius: $switch-radius;
+      background-color: $light-grey;
       cursor: pointer;
 
       @include box-sizing(border-box);
-      @include transition((border $transition-speed, box-shadow $transition-speed));
+      @include transition(border, box-shadow);
+      @include transition-duration($switch-transition-speed);
+      @include transition-timing-function(linear);
 
+      /**
+       * Switch Handler
+       */
       &:after {
-        content: "";
-        width: $switch-height - ($border-width * 2);
-        height: $switch-height - ($border-width * 2);
+        content: " ";
+        display: inherit;
+
+        width: $switch-handler-width;
+        height: $switch-handler-height;
 
         background: $white;
-        border-radius: 100%;
-        box-shadow: 0 1px 3px rgba(0,0,0,.4);
+        border-radius: $switch-handler-height / 2;
+        box-shadow: 0 2px 3px rgba(0,0,0,.3);
 
-        @include position(absolute, 0 null null 0);
-        @include transition(left ($transition-speed / 2) ease-in-out);
+        @include transition(transform, width);
+        @include transition-duration($switch-transition-speed);
+        @include transition-timing-function(ease-in-out);
       }
     }
 
     &:checked {
-
       + label {
-        background-color: $light-green;
         border-color: $light-green;
+        background-color: $light-green;
         box-shadow: inset 0px 0px 0px (($switch-height * 53.33) / 100) $light-green;
 
-        @include transition((background-color ($transition-speed * 3), border $transition-speed, box-shadow $transition-speed));
+        @include transition(background-color $switch-transition-speed * 3,
+          box-shadow $switch-transition-speed,
+          border $switch-transition-speed);
 
         &:after {
-          left: $switch-width - $switch-height;
+          @include transform(translateX($switch-handler-left));
         }
       }
-
     }
 
+    /**
+     * Disabled Input
+     */
     &:disabled,
     &:disabled:checked {
       + label {
-        background-color: $grey;
-        border-color: $grey;
+        background-color: $light-grey;
+        border-color: $light-grey;
         cursor: default;
         box-shadow: none;
       }
     }
   }
 
-  // avoid repetition using an iterator
-  // for colorful switches
+  /**
+   * Color Classes
+   */
   @each $key, $value in $classes {
-    &.#{$switch-name}-#{$key} label {
+    &.#{$switch-name}-#{$key} input:checked + label {
       background-color: $value;
       border-color: $value;
       box-shadow: inset 0px 0px 0px 16px $value;
