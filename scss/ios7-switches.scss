@@ -52,9 +52,10 @@ $switch-transition-speed         : .3s;
       cursor: pointer;
 
       @include box-sizing(border-box);
-      @include transition(border, box-shadow);
-      @include transition-duration($switch-transition-speed);
-      @include transition-timing-function(linear);
+      @include transition(
+        border $switch-transition-speed,
+        box-shadow $switch-transition-speed
+      );
 
       /**
        * Switch Handler
@@ -70,9 +71,10 @@ $switch-transition-speed         : .3s;
         border-radius: $switch-handler-height / 2;
         box-shadow: 0 2px 3px rgba(0,0,0,.3);
 
-        @include transition(transform, width);
-        @include transition-duration($switch-transition-speed);
-        @include transition-timing-function(ease-in-out);
+        @include transition(
+          transform $switch-transition-speed ease-in-out,
+          width $switch-transition-speed ease-in-out
+        );
       }
     }
 
@@ -82,9 +84,11 @@ $switch-transition-speed         : .3s;
         background-color: $light-green;
         box-shadow: inset 0px 0px 0px (($switch-height * 53.33) / 100) $light-green;
 
-        @include transition(background-color $switch-transition-speed * 3,
+        @include transition(
+          background-color $switch-transition-speed * 3,
           box-shadow $switch-transition-speed,
-          border $switch-transition-speed);
+          border $switch-transition-speed
+        );
 
         &:after {
           @include transform(translateX($switch-handler-left));
