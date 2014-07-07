@@ -9,7 +9,6 @@ $light-blue   : #3498db;
 $light-orange : #e67e22;
 $light-grey   : #e3e3e3;
 
-
 // configurable options
 $switch-name         : 'switch';
 $switch-width        : 50px;
@@ -52,10 +51,8 @@ $switch-transition-speed : .3s;
       cursor: pointer;
 
       @include box-sizing(border-box);
-      @include transition(
-        border $switch-transition-speed,
-        box-shadow $switch-transition-speed
-      );
+      @include transition-duration($switch-transition-speed);
+      @include transition(border, background-color);
 
       /**
        * Switch Handler
@@ -82,13 +79,6 @@ $switch-transition-speed : .3s;
       + label {
         border-color: $light-green;
         background-color: $light-green;
-        box-shadow: inset 0px 0px 0px (($switch-height * 53.33) / 100) $light-green;
-
-        @include transition(
-          background-color $switch-transition-speed * 3,
-          box-shadow $switch-transition-speed,
-          border $switch-transition-speed
-        );
 
         &:after {
           @include transform(translateX($switch-handler-left));
