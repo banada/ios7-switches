@@ -11,6 +11,7 @@ $light-grey   : #e3e3e3;
 
 // configurable options
 $switch-name         : 'switch';
+$include-colors      : true;
 $switch-width        : 50px;
 $switch-height       : ($switch-width * 60) / 100;
 $switch-border-width : 1px;
@@ -21,11 +22,13 @@ $classes             : (
 );
 
 // non configurable options
-$switch-radius           : $switch-height / 2;
-$switch-handler-width    : $switch-height - ($switch-border-width * 2);
-$switch-handler-height   : $switch-handler-width;
-$switch-handler-left     : $switch-width - $switch-handler-width - ($switch-border-width * 2);
-$switch-transition-speed : .3s;
+$switch-radius            : $switch-height / 2;
+$switch-background-width  : $switch-width - ($switch-border-width * 2);
+$switch-background-height : $switch-height - ($switch-border-width * 2);
+$switch-handler-width     : $switch-height - ($switch-border-width * 2);
+$switch-handler-height    : $switch-handler-width;
+$switch-handler-left      : $switch-width - $switch-handler-width - ($switch-border-width * 2);
+$switch-transition-speed  : .3s;
 
 .#{$switch-name} {
   display: inline-block;
@@ -33,16 +36,14 @@ $switch-transition-speed : .3s;
 
   input[type="checkbox"],
   input[type="radio"] {
+
+    // Hide the real input
     display: none;
 
-    /**
-     * Switch Container
-     */
+    // Switch container
     + label {
       display: block;
       position: relative;
-      width: $switch-width;
-      height: $switch-height;
       vertical-align: middle;
 
       border: $switch-border-width solid $light-grey;
@@ -50,28 +51,36 @@ $switch-transition-speed : .3s;
       background-color: $light-grey;
       cursor: pointer;
 
-      @include box-sizing(border-box);
-      @include transition-duration($switch-transition-speed);
-      @include transition(border, background-color);
+      // Both share the same transition speed/duration
+      &, &:after, &:before {
+        @include transition-duration($switch-transition-speed);
+        @include transition-timing-function($ease-in-out-quad);
+      }
 
-      /**
-       * Switch Handler
-       */
-      &:after {
-        content: " ";
+      &:after, &:before {
         display: inherit;
-
-        width: $switch-handler-width;
-        height: $switch-handler-height;
-
+        content: " ";
         background: $white;
+        @include transition-property(transform);
+      }
+
+      @include size($switch-width $switch-height);
+      @include box-sizing(border-box);
+      @include transition-property(border, background-color);
+
+      &:before {
+        border-radius: $switch-radius;
+        background-color: $white;
+        @include size($switch-background-width $switch-background-height);
+      }
+
+      // Switch handler
+      &:after {
+        @include position(absolute, 0 null null 0);
         border-radius: $switch-handler-height / 2;
         box-shadow: 0 2px 3px rgba(0,0,0,.3);
 
-        @include transition(
-          transform $switch-transition-speed ease-in-out,
-          width $switch-transition-speed ease-in-out
-        );
+        @include size($switch-handler-width $switch-handler-height);
       }
     }
 
@@ -80,15 +89,17 @@ $switch-transition-speed : .3s;
         border-color: $light-green;
         background-color: $light-green;
 
+        &:before {
+          @include transform(scale(0));
+        }
+
         &:after {
           @include transform(translateX($switch-handler-left));
         }
       }
     }
 
-    /**
-     * Disabled Input
-     */
+    // Disabled inputs
     &:disabled,
     &:disabled:checked {
       + label {
@@ -96,18 +107,23 @@ $switch-transition-speed : .3s;
         border-color: $light-grey;
         cursor: default;
         box-shadow: none;
+
+        &:before {
+          background-color: $light-grey;
+        }
       }
     }
   }
 
-  /**
-   * Color Classes
-   */
-  @each $key, $value in $classes {
-    &.#{$switch-name}-#{$key} input:checked + label {
-      background-color: $value;
-      border-color: $value;
-      box-shadow: inset 0px 0px 0px 16px $value;
+  @if $include-colors {
+
+    // Apply colorful classes
+    @each $key, $value in $classes {
+      &.#{$switch-name}-#{$key} input:checked + label {
+        background-color: $value;
+        border-color: $value;
+        box-shadow: inset 0px 0px 0px 16px $value;
+      }
     }
   }
 }
