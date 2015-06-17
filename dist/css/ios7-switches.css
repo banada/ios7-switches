@@ -43,7 +43,7 @@
 .switch input[type="radio"] + label:before {
   display: inherit;
   content: " ";
-  background: white;
+  background: #ffffff;
   -webkit-transition-property: -webkit-transform;
   -moz-transition-property: -moz-transform;
   transition-property: transform;
@@ -51,7 +51,7 @@
 .switch input[type="checkbox"] + label:before,
 .switch input[type="radio"] + label:before {
   border-radius: 15px;
-  background-color: white;
+  background-color: #e3e3e3;
   height: 28px;
   width: 48px;
 }
@@ -114,3 +114,5 @@
   border-color: #3498db;
   box-shadow: inset 0px 0px 0px 16px #3498db;
 }
+
+/*# sourceMappingURL=ios7-switches.css.map */

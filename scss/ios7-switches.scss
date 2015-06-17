@@ -70,7 +70,7 @@ $switch-transition-speed  : .3s;
 
       &:before {
         border-radius: $switch-radius;
-        background-color: $white;
+        background-color: $light-grey;
         @include size($switch-background-width $switch-background-height);
       }
 
